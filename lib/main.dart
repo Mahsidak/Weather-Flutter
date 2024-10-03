@@ -3,17 +3,21 @@ import 'package:provider/provider.dart';
 import 'viewmodel/WeatherViewModel.dart';
 import 'view/HomeView.dart';
 
-void main() => runApp(WeatherApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => WeatherViewModel(),
+      child: WeatherApp(),
+    ),
+  );
+}
 
 class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => WeatherViewModel(),
-      child: MaterialApp(
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: HomeView(),
-      ),
     );
   }
 }

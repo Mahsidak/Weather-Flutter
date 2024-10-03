@@ -14,15 +14,15 @@ class TemperatureAndLocationWidget extends StatelessWidget {
     return Column(
       children: [
         Text(
-          '$temperature°',
-          style: TextStyle(
+          temperature == 0 ? '' : '$temperature°',
+          style: const TextStyle(
             fontSize: 120,
             fontWeight: FontWeight.w300,
           ),
         ),
         Text(
           locationAbbreviation,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 200,
             fontWeight: FontWeight.w100,
             color: Colors.black87,

@@ -12,17 +12,17 @@ class CurrentWeatherResponse {
   final int id;
 
   CurrentWeatherResponse({
-    required this.coord,
-    required this.weather,
-    required this.main,
-    required this.wind,
-    required this.clouds,
+    this.coord = const Coord(),
+    this.weather = const [],
+    this.main = const Main(),
+    this.wind = const Wind(),
+    this.clouds = const Clouds(),
     this.rain,
-    required this.sys,
-    required this.name,
-    required this.timezone,
-    required this.dt,
-    required this.id,
+    this.sys = const Sys(),
+    this.name = '',
+    this.timezone = 0,
+    this.dt = 0,
+    this.id = 0,
   });
 
   factory CurrentWeatherResponse.fromJson(Map<String, dynamic> json) {
@@ -46,7 +46,7 @@ class Coord {
   final double lon;
   final double lat;
 
-  Coord({required this.lon, required this.lat});
+  const Coord({this.lon = 0.0, this.lat = 0.0});
 
   factory Coord.fromJson(Map<String, dynamic> json) {
     return Coord(
@@ -62,7 +62,7 @@ class Weather {
   final String description;
   final String icon;
 
-  Weather({required this.id, required this.main, required this.description, required this.icon});
+  const Weather({this.id = 0, this.main = '', this.description = '', this.icon = ''});
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
@@ -75,7 +75,7 @@ class Weather {
 }
 
 class Main {
-  final double temp;
+  final int temp;
   final double feelsLike;
   final double tempMin;
   final double tempMax;
@@ -84,20 +84,20 @@ class Main {
   final int seaLevel;
   final int grndLevel;
 
-  Main({
-    required this.temp,
-    required this.feelsLike,
-    required this.tempMin,
-    required this.tempMax,
-    required this.pressure,
-    required this.humidity,
-    required this.seaLevel,
-    required this.grndLevel,
+  const Main({
+    this.temp = 0,
+    this.feelsLike = 0.0,
+    this.tempMin = 0.0,
+    this.tempMax = 0.0,
+    this.pressure = 0,
+    this.humidity = 0,
+    this.seaLevel = 0,
+    this.grndLevel = 0,
   });
 
   factory Main.fromJson(Map<String, dynamic> json) {
     return Main(
-      temp: json['temp'].toDouble(),
+      temp: json['temp'].toInt(),
       feelsLike: json['feels_like'].toDouble(),
       tempMin: json['temp_min'].toDouble(),
       tempMax: json['temp_max'].toDouble(),
@@ -114,7 +114,7 @@ class Wind {
   final int deg;
   final double? gust;
 
-  Wind({required this.speed, required this.deg, this.gust});
+  const Wind({this.speed = 0.0, this.deg = 0, this.gust});
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
@@ -128,7 +128,7 @@ class Wind {
 class Clouds {
   final int all;
 
-  Clouds({required this.all});
+  const Clouds({this.all = 0});
 
   factory Clouds.fromJson(Map<String, dynamic> json) {
     return Clouds(
@@ -140,7 +140,7 @@ class Clouds {
 class Rain {
   final double oneHour;
 
-  Rain({required this.oneHour});
+  const Rain({this.oneHour = 0.0});
 
   factory Rain.fromJson(Map<String, dynamic> json) {
     return Rain(
@@ -156,12 +156,12 @@ class Sys {
   final int sunrise;
   final int sunset;
 
-  Sys({
-    required this.type,
-    required this.id,
-    required this.country,
-    required this.sunrise,
-    required this.sunset,
+  const Sys({
+    this.type = 0,
+    this.id = 0,
+    this.country = '',
+    this.sunrise = 0,
+    this.sunset = 0,
   });
 
   factory Sys.fromJson(Map<String, dynamic> json) {
