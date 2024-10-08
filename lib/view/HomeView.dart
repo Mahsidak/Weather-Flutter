@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../viewmodel/WeatherViewModel.dart';
 import 'widgets/TemperatureAndLocationWidget.dart';
+import 'widgets/HourlyForecastRowWidget.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -16,7 +18,8 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void _fetchWeatherData() {
-    final weatherViewModel = Provider.of<WeatherViewModel>(context, listen: false);
+    final weatherViewModel =
+        Provider.of<WeatherViewModel>(context, listen: false);
     weatherViewModel.getUserLocationAndFetchWeather();
   }
 
@@ -44,6 +47,9 @@ class _HomeViewState extends State<HomeView> {
                 TemperatureAndLocationWidget(
                   temperature: weatherViewModel.temperature,
                   locationAbbreviation: weatherViewModel.locationAbbreviation,
+                ),
+                HourlyForecastRowWidget(
+                  forecastData: weatherViewModel.forecastData,
                 ),
               ],
             ),
